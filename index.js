@@ -9,9 +9,13 @@ const cors = require("cors");
 
 //CONECTAR MONGOSEE
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  process.env.MONGO_DB_URL,
+  {
+    useNewUrlParser: true,
+  },
+  console.log("Connect mongodb succefully")
+);
 
 //CREAR EL SERVIDOR
 const app = express();
