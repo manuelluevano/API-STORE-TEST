@@ -9,7 +9,7 @@ const cors = require("cors");
 
 //CONECTAR MONGOSEE
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/resapis", {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
 });
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const clienteController = require("../controllers/clienteController");
 const productoController = require("../controllers/productoController");
 const pedidosController = require("../controllers/pedidosController");
-const usuariosController = require("../controllers/pedidosController");
+const usuariosController = require("../controllers/usuariosController");
 
 module.exports = function () {
   //  ******** CLIENTES  ********
@@ -48,7 +48,7 @@ module.exports = function () {
   //  ELIMINAR UN PRODUCTO
   router.delete("/pedidos/:idPedido", pedidosController.eliminarPedido);
   // ******** USUARIOS  ********
-  // router.post("/crear-cuenta", usuariosController.registrarUsuario);
-  // router.post("/iniciar-sesion", usuariosController.autenticarUsuario);
+  router.post("/crear-cuenta", usuariosController.registrarUsuario);
+  router.post("/iniciar-sesion", usuariosController.autenticarUsuario);
   return router;
 };
