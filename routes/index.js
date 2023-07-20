@@ -3,66 +3,52 @@ const router = express.Router();
 const clienteController = require("../controllers/clienteController");
 const productoController = require("../controllers/productoController");
 const pedidosController = require("../controllers/pedidosController");
+const usuariosController = require("../controllers/pedidosController");
 
 module.exports = function () {
-  //   ******** CLIENTES  ********  //
-
-  //AGREGA NUEVOS CLIENTES VIA POST
+  //  ******** CLIENTES  ********
+  // AGREGA NUEVOS CLIENTES VIA POST
   router.post("/clientes", clienteController.nuevoCliente);
-
-  //OBTENER LOS CLIENTES VIA GET
+  //  OBTENER LOS CLIENTES VIA GET
   router.get("/clientes", clienteController.obtenerClientes);
-
-  //MUESTRA UN CLIENTE EN ESPECIFICO (ID)
+  //  MUESTRA UN CLIENTE EN ESPECIFICO (ID)
   router.get("/clientes/:idCliente", clienteController.obtenerCliente);
-
   // ACTUALIZAR CLIENTE
   router.put("/clientes/:idCliente", clienteController.actualizarCliente);
-
-  //ELIMINAR UN CLIENTE
+  //  ELIMINAR UN CLIENTE
   router.delete("/clientes/:idCliente", clienteController.eliminarCliente);
-
-  //   ******** PRODUCTOS  ********  //
-
-  //AGREGA NUEVO PRODUCTO VIA POST
+  // ******** PRODUCTOS  ********
+  //  AGREGA NUEVO PRODUCTO VIA POST
   router.post(
     "/productos",
     productoController.subirArchivo,
     productoController.nuevoProducto
   );
-
-  //OBTENER LOS PRODUCTOS VIA GET
+  //  OBTENER LOS PRODUCTOS VIA GET
   router.get("/productos", productoController.obtenerProductos);
-
-  //MUESTRA UN PRIDUCTO EN ESPECIFICO (ID)
+  //  MUESTRA UN PRIDUCTO EN ESPECIFICO (ID)
   router.get("/productos/:idProducto", productoController.obtenerProducto);
-
-  //ACTUALIZAR PRODUCTOS
+  //  ACTUALIZAR PRODUCTOS
   router.put(
     "/productos/:idProducto",
     productoController.subirArchivo,
     productoController.actualizarProducto
   );
-
-  //ELIMINAR UN PRODUCTO
+  //  ELIMINAR UN PRODUCTO
   router.delete("/productos/:idProducto", productoController.eliminarProducto);
-
-  //   ******** PEDIDOS  ********  //
-
-  //AGREGAR NUEVOS PEDIDOS
+  // ******** PEDIDOS  ********
+  //  AGREGAR NUEVOS PEDIDOS
   router.post("/pedidos", pedidosController.nuevoPedido);
-
-  //MOSTRAR TODOS LOS PEDIDOS CON RELACION A CLIENTE Y PRODUCTO
+  //  MOSTRAR TODOS LOS PEDIDOS CON RELACION A CLIENTE Y PRODUCTO
   router.get("/pedidos", pedidosController.mostrarPedidos);
-
-  //MOSTRAR  PEDIDO POR ID
+  //  MOSTRAR  PEDIDO POR ID
   router.get("/pedidos/:idPedido", pedidosController.obtenerPedido);
-
-  //ACTUALIZAR PEDIDO
+  //  ACTUALIZAR PEDIDO
   router.put("/pedidos/:idPedido", pedidosController.actualizarPedido);
-
-  //ELIMINAR UN PRODUCTO
+  //  ELIMINAR UN PRODUCTO
   router.delete("/pedidos/:idPedido", pedidosController.eliminarPedido);
-
+  // ******** USUARIOS  ********
+  // router.post("/crear-cuenta", usuariosController.registrarUsuario);
+  // router.post("/iniciar-sesion", usuariosController.autenticarUsuario);
   return router;
 };
