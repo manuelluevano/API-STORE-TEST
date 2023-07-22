@@ -10,7 +10,7 @@ const cors = require("cors");
 //CONECTAR MONGOSEE
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGO_DB_URL)
   .then(() => console.log("Conectado a la base de datos"))
   .catch((error) => console.log(error));
 // {
