@@ -9,9 +9,13 @@ const cors = require("cors");
 
 //CONECTAR MONGOSEE
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-});
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Conectado a la base de datos"))
+  .catch((error) => console.log(error));
+// {
+// useNewUrlParser: true,
+// });
 // mongoose.connect(process.env.MONGO_DB_URL);
 //CREAR EL SERVIDOR
 const app = express();
