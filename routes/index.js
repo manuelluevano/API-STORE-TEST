@@ -25,7 +25,7 @@ module.exports = function () {
     productoController.nuevoProducto
   );
   //  OBTENER LOS PRODUCTOS VIA GET
-  router.get("/productos", productoController.obtenerProductos);
+  router.get("/productos", productoController.mostrarProductos);
   //  MUESTRA UN PRIDUCTO EN ESPECIFICO (ID)
   router.get("/productos/:idProducto", productoController.obtenerProducto);
   //  ACTUALIZAR PRODUCTOS
