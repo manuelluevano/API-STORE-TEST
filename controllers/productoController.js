@@ -6,7 +6,7 @@ const shortid = require("shortid");
 const configuracionMulter = {
   storage: (fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, __dirname + "../uploads/");
+      cb(null, __dirname + "../../uploads/");
     },
     filename: (req, file, cb) => {
       const extension = file.mimetype.split("/")[1];
