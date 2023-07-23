@@ -17,25 +17,27 @@ const configuracionMulter = {
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
       cb(null, true);
     } else {
-      cb(new Error("Formato no válido"));
+      cb(new Error("Formato No válido"));
     }
   },
 };
 
 //PASAR LA CONFIGURACION Y EL CAMPO'
+// pasar la configuración y el campo
 const upload = multer(configuracionMulter).single("imagen");
 
 //SUBE UN ARCHIVO`
 exports.subirArchivo = (req, res, next) => {
   upload(req, res, function (error) {
     if (error) {
-      res.json({ mensaje: error.message });
+      res.json({ mensaje: error });
     }
     return next();
   });
 };
 
 //Agrega un nuevo Producto
+
 exports.nuevoProducto = async (req, res, next) => {
   const producto = new Productos(req.body);
 
@@ -44,10 +46,7 @@ exports.nuevoProducto = async (req, res, next) => {
       producto.imagen = req.file.filename;
     }
     await producto.save();
-    res.json({
-      mensaje: "Se agrego un nuevo producto",
-      status: 200,
-    });
+    res.json({ mensaje: "Se agrego un nuevo producto" });
   } catch (error) {
     console.log(error);
     next();
@@ -55,12 +54,12 @@ exports.nuevoProducto = async (req, res, next) => {
 };
 
 //OBTENER LOS PRODUCTOS DE LA DB
-exports.obtenerProductos = async (request, response, next) => {
+exports.mostrarProductos = async (req, res, next) => {
   try {
+    // obtener todos los productos
     const productos = await Productos.find({});
-    response.json(productos);
+    res.json(productos);
   } catch (error) {
-    throw new Error();
     console.log(error);
     next();
   }
