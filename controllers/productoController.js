@@ -6,7 +6,7 @@ const shortid = require("shortid");
 const configuracionMulter = {
   storage: (fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, __dirname + "../../uploads/");
+      cb(null, __dirname + "../uploads/");
     },
     filename: (req, file, cb) => {
       const extension = file.mimetype.split("/")[1];
@@ -66,7 +66,7 @@ exports.obtenerProductos = async (request, response, next) => {
   }
 };
 
-//OBTENER UN CLIENTE DE LA DB (DB) POR ID
+//OBTENER UN PRODUCTO DE LA DB (DB) POR ID
 exports.obtenerProducto = async (request, res, next) => {
   const producto = await Productos.findById(request.params.idProducto);
 
