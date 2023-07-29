@@ -22,8 +22,7 @@ const configuracionMulter = {
   },
 };
 
-//PASAR LA CONFIGURACION Y EL CAMPO'
-// pasar la configuración y el campo
+//PASAR LA CONFIGURACION Y EL CAMPO
 const upload = multer(configuracionMulter).single("imagen");
 
 //SUBE UN ARCHIVO`

@@ -5,12 +5,15 @@ const productoController = require("../controllers/productoController");
 const pedidosController = require("../controllers/pedidosController");
 const usuariosController = require("../controllers/usuariosController");
 
+//MIDDLE PARA PROTEGER LAS RUTAS
+const auth = require("../middleware/auth");
+
 module.exports = function () {
   //  ******** CLIENTES  ********
   // AGREGA NUEVOS CLIENTES VIA POST
   router.post("/clientes", clienteController.nuevoCliente);
   //  OBTENER LOS CLIENTES VIA GET
-  router.get("/clientes", clienteController.obtenerClientes);
+  router.get("/clientes", auth, clienteController.obtenerClientes);
   //  MUESTRA UN CLIENTE EN ESPECIFICO (ID)
   router.get("/clientes/:idCliente", clienteController.obtenerCliente);
   // ACTUALIZAR CLIENTE
@@ -25,7 +28,7 @@ module.exports = function () {
     productoController.nuevoProducto
   );
   //  OBTENER LOS PRODUCTOS VIA GET
-  router.get("/productos", productoController.mostrarProductos);
+  router.get("/productos", auth, productoController.mostrarProductos);
   //  MUESTRA UN PRIDUCTO EN ESPECIFICO (ID)
   router.get("/productos/:idProducto", productoController.obtenerProducto);
   //  ACTUALIZAR PRODUCTOS
